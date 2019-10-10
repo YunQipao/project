@@ -63,6 +63,11 @@ export default [
             component: './Profile/UserProfile',
           },
           {
+            path: '/usermanage/userstest',
+            name: 'usertest',
+            component: './UserList/UserTest',
+          },
+          {
             path: '/usermanage/usersdetail/:id',
             hideInMenu: false,
             component: './Profile/UserProfile',

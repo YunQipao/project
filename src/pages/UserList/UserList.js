@@ -88,6 +88,7 @@ class UpdateForm extends PureComponent {
         type: '1',
         time: '',
         frequency: 'month',
+
       },
       currentStep: 0,
     };
@@ -97,6 +98,8 @@ class UpdateForm extends PureComponent {
       wrapperCol: { span: 13 },
     };
   }
+
+  
 
   handleNext = currentStep => {
     const { form, handleUpdate } = this.props;
