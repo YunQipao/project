@@ -54,8 +54,27 @@ class LoginPage extends Component {
           type,
         },
       });
+
+      // console.log(values);
+      // console.log(values.userName);
+      // console.log(values.password);
+      // for(var i in values){
+      //   console.log(values[i]);
+      // }
+
+      fetch(`https://www.kingdom174.work/Alogin?ADname=${values.userName}&password=${values.password}`,
+      {
+        method:'GET', 
+      })
+      .then(res => res.text()
+      )
+      .then(
+     res => {
+       console.log(res);
+       localStorage.setItem("token",res);
+      })
     }
-  };
+  }
 
   changeAutoLogin = e => {
     this.setState({
@@ -67,9 +86,11 @@ class LoginPage extends Component {
     <Alert style={{ marginBottom: 24 }} message={content} type="error" showIcon />
   );
 
+
   render() {
     const { login, submitting } = this.props;
     const { type, autoLogin } = this.state;
+
     return (
       <div className={styles.main}>
         <Login
@@ -78,6 +99,11 @@ class LoginPage extends Component {
           onSubmit={this.handleSubmit}
           ref={form => {
             this.loginForm = form;
+            // console.log(form);
+          //  for(var i in form){
+          //   console.log(i);
+          //  }
+           //console.log(form.clearedFieldMetaCache.password);
           }}
         >
           <Tab key="account" tab={formatMessage({ id: 'app.login.tab-login-credentials' })}>
@@ -87,7 +113,7 @@ class LoginPage extends Component {
               this.renderMessage(formatMessage({ id: 'app.login.message-invalid-credentials' }))}
             <UserName
               name="userName"
-              placeholder={`${formatMessage({ id: 'app.login.userName' })}: admin or user`}
+              placeholder={`${formatMessage({ id: 'app.login.userName' })}: 范老板 or user`}
               rules={[
                 {
                   required: true,
@@ -97,7 +123,7 @@ class LoginPage extends Component {
             />
             <Password
               name="password"
-              placeholder={`${formatMessage({ id: 'app.login.password' })}: ant.design`}
+              placeholder={`${formatMessage({ id: 'app.login.password' })}: 12345`}
               rules={[
                 {
                   required: true,

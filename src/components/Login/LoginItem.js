@@ -34,6 +34,11 @@ class WrapFormItem extends Component {
   onGetCaptcha = () => {
     const { onGetCaptcha } = this.props;
     const result = onGetCaptcha ? onGetCaptcha() : null;
+
+
+    console.log(result);
+
+
     if (result === false) {
       return;
     }
@@ -77,6 +82,7 @@ class WrapFormItem extends Component {
       form: { getFieldDecorator },
     } = this.props;
 
+
     // 这么写是为了防止restProps中 带入 onChange, defaultValue, rules props
     const {
       onChange,
@@ -91,8 +97,21 @@ class WrapFormItem extends Component {
       ...restProps
     } = this.props;
 
+
+
+    // console.log(getCaptchaButtonText);
+    // console.log(getCaptchaSecondText);
+    // console.log(restProps);
+    
+
+
+
     // get getFieldDecorator props
     const options = this.getFormItemOptions(this.props);
+
+
+    // console.log(this.props);
+
 
     const otherProps = restProps || {};
     if (type === 'Captcha') {
