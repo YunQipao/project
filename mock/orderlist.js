@@ -29,7 +29,7 @@ for (let i = 0; i <50; i += 1) {
     title: `一个任务名称 ${i}`,
     owner: '曲丽丽',
     desc: ['男','女'][i%2],
-    callNo: `${i+1000}`,
+    callNo: `${i+100000}`,
     status: Math.floor(Math.random() * 10) % 4,
     updatedAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),
     createdAt: new Date(`2017-07-${Math.floor(i / 2) + 1}`),

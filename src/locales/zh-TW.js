@@ -13,6 +13,14 @@ import component from './zh-TW/component';
 import editor from './zh-TW/editor';
 
 export default {
+  'app.forms.notice.title': '發布公告',
+  'app.forms.notice.description':
+  '發布公告頁用於管理員向特定用戶發布公告內容。',
+
+  'app.forms.coupons.title': '創建優惠券',
+  'app.forms.coupons.description':
+  '創建優惠券頁用於管理員向特定用戶發放優惠券。',
+
   'navBar.lang': '語言',
   'layout.user.link.help': '幫助',
   'layout.user.link.privacy': '隱私',

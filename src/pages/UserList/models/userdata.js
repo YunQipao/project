@@ -1,4 +1,4 @@
-import { queryUser, removeUser, addUser, updateUser } from '@/services/api';
+import { testUser, queryUser, removeUser, addUser, updateUser } from '@/services/api';
 
 export default {
   namespace: 'users',
@@ -11,12 +11,22 @@ export default {
   },
 
   effects: {
-    *fetch({ payload }, { call, put }) {
-      const response = yield call(queryUser, payload);
+    *test({ payload }, { call, put }) {
+      const response = yield call(testUser, payload);
+      console.log(response);
       yield put({
         type: 'save',
         payload: response,
       });
+    },
+    *fetch({ payload }, { call, put }) {
+      const response = yield call(queryUser, payload);
+      // console.log(response);
+      yield put({
+        type: 'save',
+        payload: response,
+      });
+      // console.log(payload);
     },
     *add({ payload, callback }, { call, put }) {
       const response = yield call(addUser, payload);

@@ -43,7 +43,43 @@ export async function updateRule(params = {}) {
   });
 }
 
+export async function queryAdmin(params) {
+  return request(`/api/adminlist?${stringify(params)}`);
+}
 
+export async function removeAdmin(params) {
+  return request('/api/adminlist', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'delete',
+    },
+  });
+}
+
+export async function addAdmin(params) {
+  return request('/api/adminlist', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'post',
+    },
+  });
+}
+
+export async function updateAdmin(params = {}) {
+  return request(`/api/adminlist?${stringify(params.query)}`, {
+    method: 'POST',
+    data: {
+      ...params.body,
+      method: 'update',
+    },
+  });
+}
+
+export async function testUser(params) {
+  return request(`/api/userstest?${stringify(params)}`);
+}
 
 export async function queryUser(params) {
   return request(`/api/users?${stringify(params)}`);
@@ -80,7 +116,6 @@ export async function updateUser(params = {}) {
 }
 
 
-
 export async function queryOrder(params) {
   return request(`/api/orders?${stringify(params)}`);
 }
@@ -115,6 +150,146 @@ export async function updateOrder(params = {}) {
   });
 }
 
+
+export async function queryDriver(params) {
+  return request(`/api/driver?${stringify(params)}`);
+}
+
+export async function removeDriver(params) {
+  return request('/api/driver', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'delete',
+    },
+  });
+}
+
+export async function addDriver(params) {
+  return request('/api/driver', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'post',
+    },
+  });
+}
+
+export async function updateDriver(params = {}) {
+  return request(`/api/driver?${stringify(params.query)}`, {
+    method: 'POST',
+    data: {
+      ...params.body,
+      method: 'update',
+    },
+  });
+}
+
+export async function queryFeedback(params) {
+  return request(`/api/feedback?${stringify(params)}`);
+}
+
+export async function removeFeedback(params) {
+  return request('/api/feedback', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'delete',
+    },
+  });
+}
+
+export async function addFeedback(params) {
+  return request('/api/feedback', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'post',
+    },
+  });
+}
+
+export async function updateFeedback(params = {}) {
+  return request(`/api/feedback?${stringify(params.query)}`, {
+    method: 'POST',
+    data: {
+      ...params.body,
+      method: 'update',
+    },
+  });
+}
+
+export async function queryNotice(params) {
+  return request(`/api/notice?${stringify(params)}`);
+}
+
+export async function removeNotice(params) {
+  return request('/api/notice', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'delete',
+    },
+  });
+}
+
+export async function addNotice(params) {
+  return request('/api/notice', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'post',
+    },
+  });
+}
+
+export async function updateNotice(params = {}) {
+  return request(`/api/notice?${stringify(params.query)}`, {
+    method: 'POST',
+    data: {
+      ...params.body,
+      method: 'update',
+    },
+  });
+}
+
+export async function queryCoupons(params) {
+  return request(`/api/coupons?${stringify(params)}`);
+}
+
+export async function removeCoupons(params) {
+  return request('/api/coupons', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'delete',
+    },
+  });
+}
+
+export async function addCoupons(params) {
+  return request('/api/coupons', {
+    method: 'POST',
+    data: {
+      ...params,
+      method: 'post',
+    },
+  });
+}
+
+export async function updateCoupons(params = {}) {
+  return request(`/api/coupons?${stringify(params.query)}`, {
+    method: 'POST',
+    data: {
+      ...params.body,
+      method: 'update',
+    },
+  });
+}
+
+export async function fakeData() {
+  return request('/api/fake_data');
+}
 
 
 

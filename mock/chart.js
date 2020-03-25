@@ -1,6 +1,7 @@
 import moment from 'moment';
 
 // mock data
+  //visitData是最上边的四个卡片的数据
 const visitData = [];
 const beginDay = new Date().getTime();
 
@@ -11,6 +12,8 @@ for (let i = 0; i < fakeY.length; i += 1) {
     y: fakeY[i],
   });
 }
+//beginDay是1584620153099
+//visitData是[  { x: '2020-03-20', y: 5 }, ....]的数组
 
 const visitData2 = [];
 const fakeY2 = [1, 6, 4, 8, 3, 7, 2];
@@ -20,7 +23,9 @@ for (let i = 0; i < fakeY2.length; i += 1) {
     y: fakeY2[i],
   });
 }
+//visitData是[  { x: '2020-03-20', y: 5 }, ....]的数组
 
+//salesData是直方图的数据
 const salesData = [];
 for (let i = 0; i < 12; i += 1) {
   salesData.push({
@@ -28,6 +33,8 @@ for (let i = 0; i < 12; i += 1) {
     y: Math.floor(Math.random() * 1000) + 200,
   });
 }
+//salesData是[ { x: '1月', y: 702 }, { x: '2月', y: 473 },...]的数组
+
 const searchData = [];
 for (let i = 0; i < 50; i += 1) {
   searchData.push({
@@ -38,79 +45,82 @@ for (let i = 0; i < 50; i += 1) {
     status: Math.floor((Math.random() * 10) % 2),
   });
 }
+//searchData是[ { index: 1, keyword: '搜索关键词-0', count: 252, range: 40, status: 1 },
+//{ index: 2, keyword: '搜索关键词-1', count: 87, range: 64, status: 1 },数组并未使用到该数据
+
 const salesTypeData = [
   {
-    x: '家用电器',
+    x: '2019年1月份',
     y: 4544,
   },
   {
-    x: '食用酒水',
+    x: '2019年2月份',
     y: 3321,
   },
   {
-    x: '个护健康',
+    x: '2019年3月份',
     y: 3113,
   },
   {
-    x: '服饰箱包',
+    x: '2019年4月份',
     y: 2341,
   },
   {
-    x: '母婴产品',
+    x: '2019年5月份',
     y: 1231,
   },
   {
-    x: '其他',
+    x: '2019年6月份',
     y: 1231,
   },
 ];
 
 const salesTypeDataOnline = [
   {
-    x: '家用电器',
+    x: '2019年1月份',
     y: 244,
   },
   {
-    x: '食用酒水',
+    x: '2019年2月份',
     y: 321,
   },
   {
-    x: '个护健康',
+    x: '2019年3月份',
     y: 311,
   },
   {
-    x: '服饰箱包',
+    x: '2019年4月份',
     y: 41,
   },
   {
-    x: '母婴产品',
+    x: '2019年5月份',
     y: 121,
   },
   {
-    x: '其他',
+    x: '2019年6月份',
     y: 111,
   },
 ];
 
 const salesTypeDataOffline = [
   {
-    x: '家用电器',
+    x: '2019年1月份',
     y: 99,
   },
   {
-    x: '食用酒水',
+    x: '2019年2月份',
     y: 188,
   },
   {
-    x: '个护健康',
+    x: '2019年3月份',
     y: 344,
   },
   {
-    x: '服饰箱包',
+    x: '2019年4月份',
     y: 255,
   },
   {
-    x: '其他',
+    x: '2019年5月份',
     y: 65,
   },
 ];

@@ -54,24 +54,16 @@ class LoginPage extends Component {
           type,
         },
       });
-
-      // console.log(values);
-      // console.log(values.userName);
-      // console.log(values.password);
-      // for(var i in values){
-      //   console.log(values[i]);
-      // }
-
+      localStorage.setItem("user",values.userName);
       fetch(`https://www.kingdom174.work/Alogin?ADname=${values.userName}&password=${values.password}`,
       {
         method:'GET', 
       })
-      .then(res => res.text()
+      .then(res => res.json()
       )
       .then(
      res => {
-       console.log(res);
-       localStorage.setItem("token",res);
+       localStorage.setItem("token",res.token);
       })
     }
   }
@@ -113,7 +105,7 @@ class LoginPage extends Component {
               this.renderMessage(formatMessage({ id: 'app.login.message-invalid-credentials' }))}
             <UserName
               name="userName"
-              placeholder={`${formatMessage({ id: 'app.login.userName' })}: 范老板 or user`}
+              placeholder={`${formatMessage({ id: 'app.login.userName' })}: 范老板 或 palma`}
               rules={[
                 {
                   required: true,

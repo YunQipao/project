@@ -16,6 +16,8 @@ export default {
         type: 'registerHandle',
         payload: response,
       });
+      // console.log(response);
+      // 为模拟的服务器端发送的权限信息{status: "ok", currentAuthority: "user"}
     },
   },
 

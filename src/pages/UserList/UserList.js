@@ -26,7 +26,6 @@ import {
 } from 'antd';
 import StandardTable from '@/components/StandardTable';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
-
 import styles from './UserList.less';
 
 const FormItem = Form.Item;
@@ -98,8 +97,6 @@ class UpdateForm extends PureComponent {
       wrapperCol: { span: 13 },
     };
   }
-
-  
 
   handleNext = currentStep => {
     const { form, handleUpdate } = this.props;
@@ -301,11 +298,12 @@ class UserList extends PureComponent {
     });
   }
   
+
   columns = [
     {
       title: '用户昵称',
       dataIndex: 'name',
-      render: text => <Link to={{pathname:`/usermanage/usersdetail/${text}`,state:this.props.users}}>{text}</Link>
+      render: text => <Link to={{pathname:`/usermanage/userdetail/${text}`,state:this.props.users}}>{text}</Link>
     },
     {
       title: '用户ID',
@@ -351,6 +349,11 @@ class UserList extends PureComponent {
   ];
 
   handleStandardTableChange = (pagination, filtersArg, sorter) => {
+
+    console.log(pagination);
+    console.log(filtersArg);
+    console.log(sorter);
+
     const { dispatch } = this.props;
     const { formValues } = this.state;
 
@@ -366,6 +369,7 @@ class UserList extends PureComponent {
       ...formValues,
       ...filters,
     };
+
     if (sorter.field) {
       params.sorter = `${sorter.field}_${sorter.order}`;
     }
@@ -544,94 +548,7 @@ class UserList extends PureComponent {
     );
   }
 
-  // renderAdvancedForm() {
-  //   const {
-  //     form: { getFieldDecorator },
-  //   } = this.props;
-  //   return (
-  //     <Form onSubmit={this.handleSearch} layout="inline">
-  //       <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="用户昵称">
-  //             {getFieldDecorator('name')(<Input placeholder="请输入" />)}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="手机号码">
-  //             {getFieldDecorator('phone')(<Input placeholder="请输入" />)}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="用户id">
-  //             {getFieldDecorator('callNo')(<Input placeholder="请输入" />)}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="用户类型">
-  //             {getFieldDecorator('status')(
-  //               <Select placeholder="请选择" style={{ width: '100%' }}>
-  //                 <Option value="0">关闭</Option>
-  //                 <Option value="1">运行中</Option>
-  //               </Select>
-  //             )}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="id">
-  //             {getFieldDecorator('callNo')(<InputNumber style={{ width: '100%' }} />)}
-  //           </FormItem>
-  //         </Col>
-  //       </Row>
-  //       <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="更新日期">
-  //             {getFieldDecorator('date')(
-  //               <DatePicker style={{ width: '100%' }} placeholder="请输入更新日期" />
-  //             )}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="使用状态">
-  //             {getFieldDecorator('status3')(
-  //               <Select placeholder="请选择" style={{ width: '100%' }}>
-  //                 <Option value="0">关闭</Option>
-  //                 <Option value="1">运行中</Option>
-  //               </Select>
-  //             )}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="使用状态">
-  //             {getFieldDecorator('status4')(
-  //               <Select placeholder="请选择" style={{ width: '100%' }}>
-  //                 <Option value="0">关闭</Option>
-  //                 <Option value="1">运行中</Option>
-  //               </Select>
-  //             )}
-  //           </FormItem>
-  //         </Col>
-  //       </Row>
-  //       <div style={{ overflow: 'hidden' }}>
-  //         <div style={{ marginBottom: 24 }}>
-  //           <Button type="primary" htmlType="submit">
-  //             查询
-  //           </Button>
-  //           <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>
-  //             重置
-  //           </Button>
-  //           {/* <a style={{ marginLeft: 8 }} onClick={this.toggleForm}>
-  //             收起 <Icon type="up" />
-  //           </a> */}
-  //         </div>
-  //       </div>
-  //     </Form>
-  //   );
-  // }
-
   renderForm() {
-    // const { expandForm } = this.state;
-    // return expandForm ? this.renderAdvancedForm() : this.renderSimpleForm();
-
     return this.renderSimpleForm();
   }
 
@@ -657,8 +574,9 @@ class UserList extends PureComponent {
       handleUpdateModalVisible: this.handleUpdateModalVisible,
       handleUpdate: this.handleUpdate,
     };
+
     return (
-      <PageHeaderWrapper title="查询表格">
+      <PageHeaderWrapper title="用户列表页">
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>{this.renderForm()}</div>

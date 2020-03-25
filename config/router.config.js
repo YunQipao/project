@@ -48,6 +48,19 @@ export default [
       //   ],
       // },
       {
+        path: '/adminmanage',
+        name: 'adminmanage',
+        icon: 'warning',
+        authority: ['admin'],
+        routes: [
+          {
+            path: '/adminmanage/adminlist',
+            name: 'adminlist',
+            component: './AdminList/AdminList',
+          },
+        ],
+      },
+      {
         path: '/usermanage',
         name: 'usermanage',
         icon: 'user',
@@ -58,8 +71,13 @@ export default [
             component: './UserList/UserList',
           },
           {
-            path: '/usermanage/usersdetail',
-            name: 'userdetails',
+            path: '/usermanage/userdetail',
+            name: 'userdetail',
+            component: './Profile/UserProfile',
+          },
+          {
+            path: '/usermanage/userdetail/:id',
+            hideInMenu: false,
             component: './Profile/UserProfile',
           },
           {
@@ -68,9 +86,14 @@ export default [
             component: './UserList/UserTest',
           },
           {
-            path: '/usermanage/usersdetail/:id',
+            path: '/usermanage/usertestdetail',
+            name: 'usertestdetail',
+            component: './Profile/UserTestProfile',
+          },
+          {
+            path: '/usermanage/usertestdetail/:id',
             hideInMenu: false,
-            component: './Profile/UserProfile',
+            component: './Profile/UserTestProfile',
           },
         ],
       },
@@ -85,14 +108,141 @@ export default [
             component: './OrderList/OrderList',
           },
           {
-            path: '/ordermanage/orderdetails',
-            name: 'orderdetails',
+            path: '/ordermanage/orderdetail',
+            name: 'orderdetail',
             component: './Profile/OrderProfile',
           },
           {
-            path: '/ordermanage/orderdetails/:id',
+            path: '/ordermanage/orderdetail/:id',
             hideInMenu: false,
             component: './Profile/OrderProfile',
+          },
+
+          {
+            path: '/ordermanage/ordertest',
+            name: 'ordertest',
+            component: './OrderList/OrderTest',
+          },
+          {
+            path: '/ordermanage/ordertestdetail',
+            name: 'ordertestdetail',
+            component: './Profile/OrderTestProfile',
+          },
+          {
+            path: '/ordermanage/ordertestdetail/:id',
+            hideInMenu: false,
+            authority: ['admin'],
+            component: './Profile/OrderTestProfile',
+          },
+        ],
+      },
+      {
+        path: '/drivermanage',
+        name: 'drivermanage',
+        icon: 'car',
+        routes: [
+          {
+            path: '/drivermanage/driverlist',
+            name: 'driverlist',
+            component: './DriverList/DriverList',
+          },
+          {
+            path: '/drivermanage/driverdetail',
+            name: 'driverdetail',
+            component: './Profile/DriverProfile',
+          },
+          {
+            path: '/drivermanage/driverdetail/:id',
+            hideInMenu: false,
+            component: './Profile/DriverProfile',
+          },
+        ],
+      },
+      {
+        path: '/feedbackmanage',
+        name: 'feedbackmanage',
+        icon: 'audit',
+        routes: [
+          {
+            path: '/feedbackmanage/feedbacklist',
+            name: 'feedbacklist',
+            component: './FeedbackList/FeedbackList',
+          },
+          {
+            path: '/feedbackmanage/feedbackdetail',
+            name: 'feedbackdetail',
+            component: './Profile/FeedbackProfile',
+          },
+          {
+            path: '/feedbackmanage/feedbackdetail/:id',
+            hideInMenu: false,
+            component: './Profile/FeedbackProfile',
+          },
+        ],
+      },
+      {
+        path: '/statisticsmanage',
+        name: 'statisticsmanage',
+        icon: 'bar-chart',
+        routes: [
+          {
+            path: '/statisticsmanage/statistics',
+            name: 'statistics',
+            component: './Statistics/Statistics',
+          },
+        ],
+      },
+      {
+        path: '/noticemanage',
+        name: 'noticemanage',
+        icon: 'reconciliation',
+        routes: [
+          {
+            path: '/noticemanage/noticeform',
+            name: 'noticeform',
+            component: './NoticesList/NoticesForm',
+          },
+          {
+            path: '/noticemanage/noticelist',
+            name: 'noticelist',
+            component: './NoticesList/NoticesList',
+          },
+          {
+            path: '/noticemanage/noticedetail',
+            name: 'noticedetail',
+            component: './Profile/NoticesProfile',
+          },
+          {
+            path: '/noticemanage/noticedetail/:id',
+            hideInMenu: false,
+            component: './Profile/NoticesProfile',
+          },
+        ],
+      },
+      {
+        path: '/couponsmanage',
+        name: 'couponsmanage',
+        icon: 'pay-circle',
+        routes: [
+          {
+            path: '/couponsmanage/couponsform',
+            name: 'couponsform',
+            component: './CouponsList/CouponsForm',
+          },
+          {
+            path: '/couponsmanage/couponslist',
+            name: 'couponslist',
+            component: './CouponsList/CouponsList',
+          },
+          {
+            path: '/couponsmanage/couponsdetail',
+            name: 'couponsdetail',
+            component: './Profile/CouponsProfile',
+          },
+          {
+            path: '/couponsmanage/couponsdetail/:id',
+            hideInMenu: false,
+            component: './Profile/CouponsProfile',
           },
         ],
       },

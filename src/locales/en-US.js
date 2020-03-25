@@ -13,6 +13,15 @@ import component from './en-US/component';
 import editor from './en-US/editor';
 
 export default {
+
+  'app.forms.notice.title': 'Publish Notice',
+  'app.forms.notice.description':
+  'The page is used by administrators to publish announcement to specific users.',
+
+  'app.forms.coupons.title': 'Create Coupon',
+  'app.forms.coupons.description':
+  'The page is used by administrators to create a coupon to specific users.',
+
   'navBar.lang': 'Languages',
   'layout.user.link.help': 'Help',
   'layout.user.link.privacy': 'Privacy',

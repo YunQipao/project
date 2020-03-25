@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'dva';
-import { Card, Badge, Table, Divider, List} from 'antd';
+import { Card, Badge, Table, Divider, List, Form} from 'antd';
 import DescriptionList from '@/components/DescriptionList';
 import PageHeaderWrapper from '@/components/PageHeaderWrapper';
 import styles from './UserProfile.less';
+import Link from 'umi/link';
+import { PureComponent, Fragment } from 'react';
+import { Router } from 'react-router';
+import moment from 'moment';
+import StandardTable from '@/components/StandardTable';
 
 const { Description } = DescriptionList;
+
+@connect(({ orderss, loading }) => ({
+  orderss,
+  loading: loading.models.orderss,
+}))
+@Form.create()
   class UserProfile extends Component {
     constructor(props){
       super(props);
@@ -15,21 +26,11 @@ const { Description } = DescriptionList;
   }
 
   componentDidMount(){
-    var obj1=[];
-    fetch('https://www.kingdom174.work/Alogin?ADname=%E8%8C%83%E8%80%81%E6%9D%BF&password=12345',
-    {
-      method:'GET', 
-    })
-    .then(res => res.text()
-    )
-    .then(
-   res => {
-    obj1=res.split("<br>");
-    this.setState({
-      data:obj1
-    })
-     }
-   );
+    const { dispatch } = this.props;
+    console.log(this.props);
+    dispatch({
+      type: 'orderss/fetch',
+    });
   }
 
     render() {
@@ -37,8 +38,6 @@ const { Description } = DescriptionList;
     const url=this.props.match.url;
     var strs = new Array(); //定义一数组
     strs = url.split("/"); //字符分割
-
-
 
     const nullobj={
         name:'',
@@ -69,7 +68,62 @@ const { Description } = DescriptionList;
         person=nullobj;
     }
 
+    var ordersData=[];
+    var orderID1=-1,orderID2=-1;
+    try{
+      orderID1=person.historyOrders[0]+100000;
+      orderID2=person.historyOrders[1]+100000;
+      var orderList=this.props.orderss.data.list;
+      for(var i in orderList){
+        for(var j in orderList[i]){
+          if(orderID1==orderList[i].callNo||
+            orderID2==orderList[i].callNo){
+            ordersData.push(orderList[i]);
+            break;
+          }
+        }
+      }
+  }catch(err){}
 
+    const columns = [
+      {
+        title: '订单ID',
+        dataIndex: 'callNo',
+        sorter: true,
+        render: val => `${val}`,
+        // mark to display a total number
+        needTotal: true,
+        render: text => <Link to={{pathname:`/ordermanage/orderdetail/${text}`,state:this.props.orderss}}>{text}</Link>
+      },
+      {
+        title: '司机昵称',
+        dataIndex: 'driverName',
+      },
+      {
+        title: '乘客昵称',
+        dataIndex: 'passengerName',
+      },
+      {
+        title: '出发时间',
+        dataIndex: 'leaveTime',
+      },
+      {
+        title: '出发地点',
+        dataIndex: 'leavePlace',
+      },
+      {
+        title: '结束时间',
+        dataIndex: 'arriveTime',
+      },
+      {
+        title: '结束地点',
+        dataIndex: 'arrivePlace',
+      },
+      {
+        title: '价格',
+        dataIndex: 'price',
+      },
+    ];
 
     return (
       <PageHeaderWrapper title="用户详情页">
@@ -83,19 +137,16 @@ const { Description } = DescriptionList;
             <Description term="联系电话">{person.phone}</Description>
             <Description term="家庭住址">{person.address}</Description>
           </DescriptionList>
+          <Divider style={{ marginBottom: 32 }} />
+          <div className={styles.title}>历史订单</div>
+          <Table
+            style={{ marginBottom: 24 }}
+            dataSource={ordersData}
+            columns={columns}
+          />
         </Card>
         <Card>
-        {this.state.data[0]}<br/>
-          {this.state.data[1]}<br/>
-          {this.state.data[2]}<br/>
-          {this.state.data[3]}<br/>
-          {this.state.data[4]}<br/>
-          {this.state.data[5]}<br/>
-          {this.state.data[6]}<br/>
-          {this.state.data[7]}<br/>
-          {this.state.data[8]}<br/>
-          {this.state.data[9]}<br/>
-          {this.state.data[10]}<br/>
+          
         </Card>
       </PageHeaderWrapper>
     );

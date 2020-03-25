@@ -275,6 +275,8 @@ class UpdateForm extends PureComponent {
   }
 }
 
+
+
 /* eslint react/no-multi-comp:0 */
 @connect(({ orders, loading }) => ({
   orders,
@@ -289,15 +291,45 @@ class OrderList extends PureComponent {
     selectedRows: [],
     formValues: {},
     stepFormValues: {},
+    data:{},
+    value:{},
   };
+  
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const {dispatch}=this.props;
     dispatch({
       type: 'orders/fetch',
     });
+
+    var pag={};
+    var tk=localStorage.getItem("token");
+    fetch(`https://www.kingdom174.work/orderList?token=${tk}`,
+    {
+      method:'GET',
+    })
+    .then(res=>res.json())
+    .then(res=>{
+      const temp={};
+      pag.total=res.length;
+      pag.current=1;
+      pag.pageSize=10;
+      
+      temp.pagination=pag;//this.props.userstest.data.pagination;
+      temp.list=res;
+
+      this.setState({
+        data:temp,
+        values:temp,
+      })
+      console.log(this.state.data);
+      console.log(this.props);
+    });
+
   }
   
+
+
   columns = [
     {
       title: '订单ID',
@@ -306,12 +338,11 @@ class OrderList extends PureComponent {
       render: val => `${val}`,
       // mark to display a total number
       needTotal: true,
-      render: text => <Link to={{pathname:`/ordermanage/orderdetails/${text}`,state:this.props.orders}}>{text}</Link>
+      render: text => <Link to={{pathname:`/ordermanage/orderdetail/${text}`,state:this.props.orders}}>{text}</Link>
     },
     {
       title: '司机昵称',
       dataIndex: 'driverName',
-      // render: text => <Link to={{pathname:`/ordermanage/orderdetails/${text}`,state:this.props.users}}>{text}</Link>
     },
     {
       title: '乘客昵称',
@@ -560,89 +591,7 @@ class OrderList extends PureComponent {
     );
   }
 
-  // renderAdvancedForm() {
-  //   const {
-  //     form: { getFieldDecorator },
-  //   } = this.props;
-  //   return (
-  //     <Form onSubmit={this.handleSearch} layout="inline">
-  //       <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="规则名称">
-  //             {getFieldDecorator('name')(<Input placeholder="请输入" />)}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="使用状态">
-  //             {getFieldDecorator('status')(
-  //               <Select placeholder="请选择" style={{ width: '100%' }}>
-  //                 <Option value="0">关闭</Option>
-  //                 <Option value="1">运行中</Option>
-  //               </Select>
-  //             )}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="callNo">
-  //             {getFieldDecorator('callNo')(<Input placeholder="请输入" />)}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="id">
-  //             {getFieldDecorator('id')(<InputNumber style={{ width: '100%' }} />)}
-  //           </FormItem>
-  //         </Col>
-  //       </Row>
-  //       <Row gutter={{ md: 8, lg: 24, xl: 48 }}>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="更新日期">
-  //             {getFieldDecorator('date')(
-  //               <DatePicker style={{ width: '100%' }} placeholder="请输入更新日期" />
-  //             )}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="使用状态">
-  //             {getFieldDecorator('status3')(
-  //               <Select placeholder="请选择" style={{ width: '100%' }}>
-  //                 <Option value="0">关闭</Option>
-  //                 <Option value="1">运行中</Option>
-  //               </Select>
-  //             )}
-  //           </FormItem>
-  //         </Col>
-  //         <Col md={8} sm={24}>
-  //           <FormItem label="使用状态">
-  //             {getFieldDecorator('status4')(
-  //               <Select placeholder="请选择" style={{ width: '100%' }}>
-  //                 <Option value="0">关闭</Option>
-  //                 <Option value="1">运行中</Option>
-  //               </Select>
-  //             )}
-  //           </FormItem>
-  //         </Col>
-  //       </Row>
-  //       <div style={{ overflow: 'hidden' }}>
-  //         <div style={{ marginBottom: 24 }}>
-  //           <Button type="primary" htmlType="submit">
-  //             查询
-  //           </Button>
-  //           <Button style={{ marginLeft: 8 }} onClick={this.handleFormReset}>
-  //             重置
-  //           </Button>
-  //           <a style={{ marginLeft: 8 }} onClick={this.toggleForm}>
-  //             收起 <Icon type="up" />
-  //           </a>
-  //         </div>
-  //       </div>
-  //     </Form>
-  //   );
-  // }
-
   renderForm() {
-    // const { expandForm } = this.state;
-    // return expandForm ? this.renderAdvancedForm() : this.renderSimpleForm();
-
     return this.renderSimpleForm();
   }
 
@@ -669,7 +618,7 @@ class OrderList extends PureComponent {
       handleUpdate: this.handleUpdate,
     };
     return (
-      <PageHeaderWrapper title="查询表格">
+      <PageHeaderWrapper title="订单列表页">
         <Card bordered={false}>
           <div className={styles.tableList}>
             <div className={styles.tableListForm}>{this.renderForm()}</div>

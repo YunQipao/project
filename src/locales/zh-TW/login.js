@@ -37,4 +37,7 @@ export default {
   'validation.date.required': '請選擇起止日期',
   'validation.goal.required': '請輸入目標描述',
   'validation.standard.required': '請輸入衡量標淮',
+
+  'validation.notice.title.required': '請輸入公告標題',
+  'validation.content.required': '請輸入公告內容',
 };

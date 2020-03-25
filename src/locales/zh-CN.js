@@ -13,6 +13,14 @@ import component from './zh-CN/component';
 import editor from './zh-CN/editor';
 
 export default {
+  'app.forms.notice.title': '发布公告',
+  'app.forms.notice.description':
+  '发布公告页用于管理员向特定用户发布公告内容。',
+
+  'app.forms.coupons.title': '创建优惠券',
+  'app.forms.coupons.description':
+  '创建优惠券页用于管理员向特定用户发放优惠券。',
+
   'navBar.lang': '语言',
   'layout.user.link.help': '帮助',
   'layout.user.link.privacy': '隐私',

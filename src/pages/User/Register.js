@@ -105,6 +105,10 @@ class Register extends Component {
             prefix,
           },
         });
+        // console.log(values);values为注册表中的信息
+        // {mail: "abc1233@qq.com", password: "123456", confirm: "123456", mobile: "12345678901", captcha: "1234"}
+        // console.log(prefix);
+        // 为手机号码前缀，代表着哪一个地区的手机号码
       }
     });
   };

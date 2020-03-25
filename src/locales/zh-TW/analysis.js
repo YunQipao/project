@@ -1,6 +1,22 @@
 export default {
   'app.analysis.test': '工專路 {no} 號店',
   'app.analysis.introduce': '指標說明',
+
+  'app.analysis.time': '2019年 {no} 月份',
+  'app.analysis.total-users': '用戶總數',
+  'app.analysis.total-orders': '訂單總數',
+  'app.analysis.total-kilometers': '總公裏數',
+  'app.analysis.average-kilometers': '平均公裏數',
+  'app.analysis.users-trend': '用戶數趨勢',
+  'app.analysis.users-ranking': '用戶數排行',
+  'app.analysis.orders-trend': '訂單數趨勢',
+  'app.analysis.orders-ranking': '訂單數排行',
+  'app.analysis.total-kilometers-trend': '總公裏數趨勢',
+  'app.analysis.total-kilometers-ranking': '總公裏數排行',
+  'app.analysis.average-kilometers-trend': '平均公裏數趨勢',
+  'app.analysis.average-kilometers-ranking': '平均公裏數排行',
+  'app.analysis.each-hour': '小時',
+
   'app.analysis.total-sales': '總銷售額',
   'app.analysis.day-sales': '日銷售額',
   'app.analysis.visits': '訪問量',

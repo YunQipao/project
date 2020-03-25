@@ -1,6 +1,22 @@
 export default {
   'app.analysis.test': 'Gongzhuan No.{no} shop',
   'app.analysis.introduce': 'Introduce',
+
+  'app.analysis.time': '2019 /{no}/',
+  'app.analysis.total-users': 'Total Users Number',
+  'app.analysis.total-orders': 'Total Orders Number',
+  'app.analysis.total-kilometers': 'Total Kilometers',
+  'app.analysis.average-kilometers': 'Average Kilometers',
+  'app.analysis.users-trend': 'Users Trend',
+  'app.analysis.users-ranking': 'Users Ranking',
+  'app.analysis.orders-trend': 'Orders Trend',
+  'app.analysis.orders-ranking': 'Orders Ranking',
+  'app.analysis.total-kilometers-trend': 'Total Kilometers Trend',
+  'app.analysis.total-kilometers-ranking': 'Total Kilometers Ranking',
+  'app.analysis.average-kilometers-trend': 'Average Kilometers Trend',
+  'app.analysis.average-kilometers-ranking': 'Average Kilometers Ranking',
+  'app.analysis.each-hour': 'Each Hour',
+
   'app.analysis.total-sales': 'Total Sales',
   'app.analysis.day-sales': 'Daily Sales',
   'app.analysis.visits': 'Visits',

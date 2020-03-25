@@ -104,7 +104,14 @@ function fakeList(count) {
         },
       ],
     });
+
   }
+
+  if(standard)
+  {
+    console.log(standard);
+  }
+
 
   return list;
 }
